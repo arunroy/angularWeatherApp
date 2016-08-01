@@ -25,8 +25,8 @@
         <ul class="nav nav-pills">
             <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Today</a></li>
             <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Tomorrow</a></li>
-            <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Day after tomorrow</a></li>
-			<li ng-class="{active:tab.isSet(4)}"><a href ng-click="tab.setTab(4)">Thursday</a></li>
+            <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">{{weatherData.data[0].forecast[3].day}}</a></li>
+			<li ng-class="{active:tab.isSet(4)}"><a href ng-click="tab.setTab(4)">{{weatherData.data[0].forecast[4].day}}</a></li>
         </ul>
         
         <div ng-show="tab.isSet(1)">
