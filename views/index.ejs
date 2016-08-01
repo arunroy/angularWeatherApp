@@ -13,11 +13,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <body>
+	<img id="title-img" class="pull-left" src="images/weather.png"/>
+	<div>
+		
+		<div id="title-bar"><h1 id="app-title">WeatherCast</h1>
+		</div>
+		
+	</div>
+	
    <section  class="well" ng-app="myApp" ng-controller="myCtrl as tab">
         <ul class="nav nav-pills">
             <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Today</a></li>
             <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Tomorrow</a></li>
             <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Day after tomorrow</a></li>
+			<li ng-class="{active:tab.isSet(4)}"><a href ng-click="tab.setTab(4)">Thursday</a></li>
         </ul>
         
         <div ng-show="tab.isSet(1)">
@@ -25,27 +34,52 @@
 		    <h1 class="fuild-title">{{weatherData.data[0].current.day}}, {{weatherData.data[0].current.date}}</span><img ng-src="{{weatherData.data[0].current.imageUrl}}"/></h1><br>
 			<h1 class="fluid-title"><small>{{weatherData.data[0].current.observationpoint}}</small></h1><br>
 			<h2 class="fluid-title"><small>Temperature :</small>{{weatherData.data[0].current.temperature}}<small><sup>&#8457;</sup></small></h2><br>
-			Feelslike : {{weatherData.data[0].current.feelslike}}<br>
-			Humidity : {{weatherData.data[0].current.humidity}}<br>
+			<h3 class="props"><small>Feelslike : </small>{{weatherData.data[0].current.feelslike}}</h3><br>
+			<h3 class="props"><small>Humidity : </small>{{weatherData.data[0].current.humidity}}</h3><br>
+			<!--<h3 class="props"><small>Observation time : </small>{{weatherData.data[0].current.observationtime}}</h3><br>-->
+	   		<h3 class="props"><small>Sky : </small>{{weatherData.data[0].current.skytext}}</small></h3>
+	   		<img ng-show="icons[0].isSunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/1.gif" height="32px" width="40px"/>
+		   <img ng-show="icons[0].isPartlySunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/2.gif" height="32px" width="40px"/>
+	   		<img ng-show="icons[0].isCloudy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/3.gif" height="32px" width="40px"/>
+	   		<img ng-show="icons[0].isLightRainy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/8.gif" height="32px" width="40px"/>
+	   		<br>
 			
-			Observation time : {{weatherData.data[0].current.observationtime}}<br>
-			Day : {{weatherData.data[0].current.shortday}}<br>
-			Sky : {{weatherData.data[0].current.skytext}}<br>
-			
-			Windspeeds : {{weatherData.data[0].current.windspeed}}<br>
+			Windspeeds : {{weatherData.data[0].current.windspeed}}&nbsp;<img height="16px" width="16px" src="http://66.media.tumblr.com/a10dc0f8f6b2a63bb88ffebc25fef690/tumblr_inline_o83v6mdtoO1szdgp5_500.gif"/><br>
 		</p>
         </div>
         <div ng-show="tab.isSet(2)">
 			<p>
-				<h1 class="fuild-title">{{weatherData.data[0].forecast[2].day}}, {{weatherData.data[0].forecast[2].date}}</span><img ng-src="{{weatherData.data[0].current.imageUrl}}"/></h1><br>
+				<h1 class="fuild-title">{{weatherData.data[0].forecast[2].day}}, {{weatherData.data[0].forecast[2].date}}</span></h1><br>
 				<h3 class="fluid-title"><small>Highest Temperature :</small>{{weatherData.data[0].forecast[2].high}}<small><sup>&#8457;</sup></small></h3><br>
 				<h3 class="fluid-title"><small>Lowest Temperature :</small>{{weatherData.data[0].forecast[2].low}}<small><sup>&#8457;</sup></small></h3><br>
-				Day : {{weatherData.data[0].forecast[2].shortday}}<br>
-				Sky : {{weatherData.data[0].forecast[2].skytextday}}<br>
+				Sky : {{weatherData.data[0].forecast[2].skytextday}}
+		   		<img ng-show="icons[2].isSunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/1.gif" height="32px" width="40px"/>
+				<img ng-show="icons[2].isPartlySunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/2.gif" height="32px" width="40px"/>
+				<img ng-show="icons[2].isCloudy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/3.gif" height="32px" width="40px"/>
+				<img ng-show="icons[2].isLightRainy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/8.gif" height="32px" width="40px"/><br>
 			</p>
         </div>
         <div ng-show="tab.isSet(3)">
-             <h4>Tab 3</h4>
+             <p>
+				<h1 class="fuild-title">{{weatherData.data[0].forecast[3].day}}, {{weatherData.data[0].forecast[3].date}}</span></h1><br>
+				<h3 class="fluid-title"><small>Highest Temperature :</small>{{weatherData.data[0].forecast[3].high}}<small><sup>&#8457;</sup></small></h3><br>
+				<h3 class="fluid-title"><small>Lowest Temperature :</small>{{weatherData.data[0].forecast[3].low}}<small><sup>&#8457;</sup></small></h3><br>
+				Sky : {{weatherData.data[0].forecast[3].skytextday}}<img ng-show="icons[3].isSunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/1.gif" height="32px" width="40px"/>
+				<img ng-show="icons[3].isPartlySunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/2.gif" height="32px" width="40px"/>
+				<img ng-show="icons[3].isCloudy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/3.gif" height="32px" width="40px"/>
+				<img ng-show="icons[3].isLightRainy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/8.gif" height="32px" width="40px"/><br>
+			</p>
+        </div>
+		<div ng-show="tab.isSet(4)">
+             <p>
+				<h1 class="fuild-title">{{weatherData.data[0].forecast[4].day}}, {{weatherData.data[0].forecast[4].date}}</span></h1><br>
+				<h3 class="fluid-title"><small>Highest Temperature :</small>{{weatherData.data[0].forecast[4].high}}<small><sup>&#8457;</sup></small></h3><br>
+				<h3 class="fluid-title"><small>Lowest Temperature :</small>{{weatherData.data[0].forecast[4].low}}<small><sup>&#8457;</sup></small></h3><br>
+				Sky : {{weatherData.data[0].forecast[4].skytextday}}<img ng-show="icons[4].isSunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/1.gif" height="32px" width="40px"/>
+				<img ng-show="icons[4].isPartlySunny" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/2.gif" height="32px" width="40px"/>
+				<img ng-show="icons[4].isCloudy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/3.gif" height="32px" width="40px"/>
+				<img ng-show="icons[4].isLightRainy" ng-src="http://resources.marshalladulteducation.org/hot_potatoes/weather/images/8.gif" height="32px" width="40px"/><br>
+			</p>
         </div>
     </section>
 <script>
@@ -63,13 +97,101 @@
         this.isSet = function (tabId) {
             return this.tab === tabId;
         };
+
+     $http.get('http://api.openweathermap.org/data/2.5/forecast?q=London&APPID=ce7f5fa263d102a6e293983a990a2726')
+		.success(function(data){
+			console.log(data);
+			console.log("API Successful");})
+		.error(function(e){
+			console.log("Error");
+			console.log(e);
+		});
+		
+/*			$http.jsonp('http://public-api.wordpress.com/rest/v1/sites/wtmpeachtest.wordpress.com/posts?callback=JSON_CALLBACK')
+				.success(function(data){
+					console.log("API Successful");
+					console.log(data);})
+				.error(function(e)
+					   {console.log("Error");});*/
+		
+		
 	$http.get('/weather').then(function(response){
+		console.log('Call successful');
+		$scope.isCloudy=false;
+		$scope.isSunny=false;
 		console.log("Request served");
 		console.log(response);
 		$scope.weatherData=response;
 		console.log(response.data[0].forecast[2]);
+		
+		var icons=[];
+		var isCloudy=false;
+		var isSunny=false;
+		var isLightRainy=false;
+		var isPartlySunny=false;
+		
+		if(response.data[0].current.skytext=='Cloudy')
+			isCloudy=true;
+		else if(response.data[0].current.skytext=='Partly Sunny')
+			isPartlySunny=true;
+		else if(response.data[0].current.skytext=='Sunny')
+			isSunny=true;
+		else if(response.data[0].current.skytext=='Light Rain')
+			isLightRainy=true;
+		icons.push({'isCloudy': isCloudy,
+					'isSunny': isSunny,
+					'isPartlySunny':isPartlySunny,
+					'isLightRainy': isLightRainy
+				   });
+		icons.push({'isCloudy': false,
+					'isSunny': false,
+					'isPartlySunny': false,
+					'isLightRainy': false
+				   });
+		var i=1;
+		
+/*		angular.forEach(response.data[0].forecast,function(forecast,key){
+			console.log(forecast);
+					if(forecast.skytextday=='Cloudy')
+						isCloudy=true;
+					else if(forecast.skytext=='Sunny')
+						isSunny=true;
+					else if(forecast.skytext=='Light Rain')
+						isLightRainy=true;
+				icons.push({'isCloudy': isCloudy,
+					'isSunny': isSunny,
+					'isLightRainy': isLightRainy
+				   });
+		});*/
+		for(i=2;i<5;i++){
+				isCloudy=false;
+				isSunny=false;
+				isLightRainy=false;
+				isPartlySunny=false;
+			console.log("Day "+i+" "+response.data[0].forecast[i].skytextday);
+			if(response.data[0].forecast[i].skytextday=='Cloudy')
+						isCloudy=true;
+					else if(response.data[0].forecast[i].skytextday=='Sunny')
+						isSunny=true;
+					else if(response.data[0].forecast[i].skytextday=='Partly Sunny')
+						isPartlySunny=true;
+					else if(response.data[0].forecast[i].skytextday=='Light Rain')
+						isLightRainy=true;
+					else console.log('Mismatch '+response.data[0].forecast[i].skytextday+' & '+isPartlySunny);
+				icons.push({'isCloudy': isCloudy,
+					'isSunny': isSunny,
+					'isPartlySunny':isPartlySunny,
+					'isLightRainy': isLightRainy
+				   });
+		}
+		$scope.icons=icons;
+		console.log(icons);
+		
+		
+		console.log(response.data[0].current);
+		console.log($scope.isCloudy);
+		console.log($scope.isSunny);
 	})
-	
 	});
 })();
 </script>
